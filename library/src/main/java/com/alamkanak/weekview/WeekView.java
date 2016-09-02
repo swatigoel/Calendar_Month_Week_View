@@ -971,12 +971,42 @@ public class WeekView extends View {
                         currentPeriodEvents = mNextPeriodEvents;
                     }
                 }
-                if (currentPeriodEvents == null)
-                    currentPeriodEvents = mWeekViewLoader.onLoad(periodToFetch);
-                if (previousPeriodEvents == null)
-                    previousPeriodEvents = mWeekViewLoader.onLoad(periodToFetch-1);
-                if (nextPeriodEvents == null)
-                    nextPeriodEvents = mWeekViewLoader.onLoad(periodToFetch+1);
+                if (currentPeriodEvents == null) {
+                    int year = periodToFetch / 12 ;
+                    int month = periodToFetch % 12 + 1;
+                    String monthKey = "" + (month -1) + "-" + year;
+
+                    List<WeekViewEvent> eventListByMonth = WeekViewUtil.monthMasterEvents.get(monthKey);
+                    if (eventListByMonth == null || eventListByMonth.isEmpty()) {
+                        currentPeriodEvents = mWeekViewLoader.onLoad(periodToFetch);
+                    } else {
+                        currentPeriodEvents = eventListByMonth;
+                    }
+                }
+                if (previousPeriodEvents == null) {
+                    int year = (periodToFetch - 1) / 12 ;
+                    int month = (periodToFetch - 1) % 12 + 1;
+                    String monthKey = "" + (month -1) + "-" + year;
+
+                    List<WeekViewEvent> eventListByMonth = WeekViewUtil.monthMasterEvents.get(monthKey);
+                    if (eventListByMonth == null || eventListByMonth.isEmpty()) {
+                        previousPeriodEvents = mWeekViewLoader.onLoad(periodToFetch - 1);
+                    } else {
+                        previousPeriodEvents = eventListByMonth;
+                    }
+                }
+                if (nextPeriodEvents == null) {
+                    int year = (periodToFetch + 1) / 12 ;
+                    int month = (periodToFetch + 1) % 12 + 1;
+                    String monthKey = "" + (month -1) + "-" + year;
+
+                    List<WeekViewEvent> eventListByMonth = WeekViewUtil.monthMasterEvents.get(monthKey);
+                    if (eventListByMonth == null || eventListByMonth.isEmpty()) {
+                        nextPeriodEvents = mWeekViewLoader.onLoad(periodToFetch + 1);
+                    } else {
+                        nextPeriodEvents = eventListByMonth;
+                    }
+                }
 
 
                 // Clear events.
@@ -1902,6 +1932,10 @@ public class WeekView extends View {
     public void notifyDatasetChanged(){
         mRefreshEvents = true;
         invalidate();
+    }
+
+    public void setRefreshEvents(boolean value) {
+        mRefreshEvents = value;
     }
 
     /**

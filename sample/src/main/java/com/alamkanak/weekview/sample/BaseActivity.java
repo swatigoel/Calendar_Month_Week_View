@@ -386,7 +386,14 @@ OnDayClickListener, View.OnClickListener, WeekView.EmptyViewClickListener, Exten
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            updateView();
+            if (mWeekViewType == TYPE_MONTH_VIEW) {
+                updateView();
+                mWeekView.setRefreshEvents(true);
+            } else if (mWeekViewType == TYPE_WEEK_VIEW) {
+                mWeekView.notifyDatasetChanged();
+            } else if (mWeekViewType == TYPE_DAY_VIEW) {
+                mWeekView.notifyDatasetChanged();
+            }
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
