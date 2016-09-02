@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MyActivity" >
+    <item android:id="@+id/calendar_action"
+        android:title="@string/action_today"
+        android:orderInCategory="100"
+          app:actionLayout="@layout/header_layout"
+          app:showAsAction="ifRoom"/>
+    <!--<group android:checkableBehavior="single">
+        <item android:id="@+id/action_month_view"
+              android:title="@string/action_month_view"
+              android:orderInCategory="100"
+              android:icon="@drawable/date_number_background"
+              app:showAsAction="ifRoom"/>
+        <item android:id="@+id/action_week_view"
+              android:title="@string/action_week_view"
+              android:orderInCategory="100"
+              app:showAsAction="ifRoom"/>
+        <item android:id="@+id/action_day_view"
+            android:title="@string/action_day_view"
+            android:orderInCategory="100"
+            app:showAsAction="ifRoom"/>
+        &lt;!&ndash;<item android:id="@+id/action_three_day_view"
+            android:title="@string/action_three_day_view"
+            android:orderInCategory="100"
+            app:showAsAction="ifRoom"
+            android:checked="true"/>&ndash;&gt;
+    </group>-->
+</menu>

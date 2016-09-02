@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/month_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="@string/action_month_view"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/week_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="@string/action_week_view"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/day_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:padding="10dp"
+        android:text="@string/action_day_view"
+        android:textColor="@color/black"/>
+</LinearLayout>
